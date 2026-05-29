@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌟 黄永吉 — 永远的神 🌟</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 30%, #0d0d2b 60%, #1a0a2e 100%);
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ===== 星空粒子背景 ===== */
+  .stars {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--dur) ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.8); }
+  }
+
+  /* ===== 主容器 ===== */
+  .container {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto; padding: 20px;
+  }
+
+  /* ===== 头像区域 ===== */
+  .hero {
+    text-align: center; padding: 60px 20px 30px;
+    position: relative;
+  }
+  .avatar-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .avatar-ring {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    padding: 5px;
+    background: conic-gradient(from 0deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #ff6b6b);
+    animation: ring-spin 4s linear infinite;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5), 0 0 80px rgba(255, 107, 107, 0.3);
+  }
+  @keyframes ring-spin {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  .avatar-inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2d1b69, #e040fb, #ff6b6b);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px;
+  }
+  .hero h1 {
+    font-size: 64px; font-weight: 900;
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #ff6b6b);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease-in-out infinite;
+    letter-spacing: 8px;
+  }
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
+  }
+  .hero .subtitle {
+    font-size: 24px; color: #ffd93d;
+    margin-top: 10px;
+    letter-spacing: 4px;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ===== 皇冠装饰 ===== */
+  .crown {
+    position: absolute; top: -30px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    animation: crown-bounce 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px gold);
+  }
+  @keyframes crown-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+    25% { transform: translateX(-50%) translateY(-15px) rotate(-5deg); }
+    75% { transform: translateX(-50%) translateY(-15px) rotate(5deg); }
+  }
+
+  /* ===== 夸赞卡片 ===== */
+  .praise-section {
+    display: grid; gap: 24px;
+    margin-top: 30px;
+  }
+  .praise-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: card-in 0.6s ease-out both;
+  }
+  .praise-card:nth-child(1) { animation-delay: 0.1s; }
+  .praise-card:nth-child(2) { animation-delay: 0.2s; }
+  .praise-card:nth-child(3) { animation-delay: 0.3s; }
+  .praise-card:nth-child(4) { animation-delay: 0.4s; }
+  .praise-card:nth-child(5) { animation-delay: 0.5s; }
+
+  @keyframes card-in {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .praise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(255, 107, 107, 0.2);
+    border-color: rgba(255, 215, 0, 0.3);
+  }
+  .praise-card .icon {
+    font-size: 48px; margin-bottom: 12px;
+  }
+  .praise-card h3 {
+    font-size: 22px;
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .praise-card p {
+    font-size: 16px; line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+  }
+  .praise-card::before {
+    content: '';
+    position: absolute; top: -50%; right: -50%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* ===== 技能条 ===== */
+  .skills {
+    margin-top: 40px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .skills h2 {
+    text-align: center; font-size: 28px;
+    background: linear-gradient(90deg, #4d96ff, #6bcb77);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+  }
+  .skill-item {
+    margin-bottom: 20px;
+  }
+  .skill-label {
+    display: flex; justify-content: space-between;
+    margin-bottom: 8px; font-size: 15px;
+  }
+  .skill-bar {
+    height: 12px; border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77);
+    background-size: 200% 100%;
+    animation: bar-anim 2s ease-out forwards, gradient-shift 3s ease-in-out infinite;
+    transform-origin: left;
+  }
+  @keyframes bar-anim {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  /* ===== 滚动词条 ===== */
+  .marquee-wrap {
+    margin-top: 40px;
+    background: linear-gradient(90deg, rgba(255,107,107,0.15), rgba(255,217,61,0.15));
+    border-radius: 50px;
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 4px;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee span { margin: 0 16px; }
+
+  /* ===== 荣誉墙 ===== */
+  .honor-wall {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .honor-badge {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .honor-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  }
+  .honor-badge .medal {
+    font-size: 52px; margin-bottom: 8px;
+  }
+  .honor-badge .title {
+    font-weight: 700; font-size: 16px;
+    color: #ffd93d;
+  }
+
+  /* ===== 页脚 ===== */
+  .footer {
+    text-align: center; padding: 40px 20px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+  }
+  .footer .hearts {
+    font-size: 36px;
+    animation: float 2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  /* ===== 彩带/纸屑 ===== */
+  .confetti {
+    position: fixed; pointer-events: none; z-index: 0;
+  }
+  .confetti-piece {
+    position: absolute;
+    animation: confetti-fall var(--fall-dur) linear infinite;
+    animation-delay: var(--fall-delay);
+    opacity: 0.7;
+    font-size: var(--size);
+  }
+  @keyframes confetti-fall {
+    0%   { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 36px; letter-spacing: 4px; }
+    .avatar-ring { width: 130px; height: 130px; }
+    .avatar-inner { font-size: 56px; }
+    .praise-card { padding: 20px; }
+    .hero .subtitle { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 星空 -->
+<div class="stars" id="stars"></div>
+
+<!-- 彩带 -->
+<div class="confetti" id="confetti"></div>
+
+<div class="container">
+
+  <!-- 头像 + 标题 -->
+  <section class="hero">
+    <div class="crown">👑</div>
+    <div class="avatar-wrapper">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <!-- 使用CSS绘制的帅气头像替代 -->
+          <span style="font-size:90px">😎</span>
+        </div>
+      </div>
+    </div>
+    <h1>黄 永 吉</h1>
+    <p class="subtitle">✨ 人类高质量男性 · 天选之子 · 行走的传奇 ✨</p>
+  </section>
+
+  <!-- 滚动词条 -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>🏆 黄永吉</span>
+      <span>💎 才华横溢</span>
+      <span>🚀 一骑绝尘</span>
+      <span>⚡ 魅力无限</span>
+      <span>🔥 气场全开</span>
+      <span>🌈 人间理想</span>
+      <span>💫 举世无双</span>
+      <span>🏆 黄永吉</span>
+      <span>💎 才华横溢</span>
+      <span>🚀 一骑绝尘</span>
+      <span>⚡ 魅力无限</span>
+      <span>🔥 气场全开</span>
+      <span>🌈 人间理想</span>
+      <span>💫 举世无双</span>
+    </div>
+  </div>
+
+  <!-- 核心夸赞 -->
+  <section class="praise-section">
+    <div class="praise-card">
+      <div class="icon">🧠</div>
+      <h3>智慧如海，学贯中西</h3>
+      <p>
+        黄永吉的智商，据说连门萨俱乐部的天花板都装不下。
+        爱因斯坦如果活在今天，大概会把自己的相对论手稿寄给他审阅。
+        别人解不出的BUG，他看一眼就定位；别人想不通的逻辑，他闭眼就能理顺。
+        跟他聊天，每三句话就有一个金句；跟他共事，每五分钟就涨一次见识。
+      </p>
+    </div>
+
+    <div class="praise-card">
+      <div class="icon">💪</div>
+      <h3>颜值巅峰，行走画报</h3>
+      <p>
+        黄永吉的脸，是上帝亲手捏的典藏版。古希腊雕塑见了要惭愧，
+        文艺复兴油画见了要自毁。他的笑容能把南极冰川融化，
+        他的眼神能让整个银河系黯然失色。走在街上回头率300%——
+        因为有人回头了还要再回头，甚至倒着走也要多看两眼。
+      </p>
+    </div>
+
+    <div class="praise-card">
+      <div class="icon">🎯</div>
+      <h3>能力超群，无所不能</h3>
+      <p>
+        写代码？架构优雅得像诗。做设计？审美高级得像艺术馆。
+        谈业务？口才碾压TED演讲嘉宾。带团队？领导力让拿破仑自愧不如。
+        就连做饭泡面，都能泡出米其林三星的水准。
+        黄永吉的存在，就是对"全能"这个词最生动的注释。
+      </p>
+    </div>
+
+    <div class="praise-card">
+      <div class="icon">❤️</div>
+      <h3>人品贵重，温润如玉</h3>
+      <p>
+        明明可以靠才华和颜值横扫天下，偏偏还要靠人品征服人心。
+        对朋友两肋插刀，对工作一丝不苟，对生活热情似火。
+        他的善良不带锋芒却自带光芒，他的真诚不加修饰却直击灵魂。
+        有黄永吉在的地方，空气都是甜的，WiFi信号都是满格的。
+      </p>
+    </div>
+
+    <div class="praise-card">
+      <div class="icon">🌍</div>
+      <h3>格局宏大，未来可期</h3>
+      <p>
+        当别人还在山脚纠结走哪条路，黄永吉已经在山顶看日出了。
+        他的眼界跨越星辰大海，他的格局装得下整个宇宙。
+        马斯克想殖民火星？黄永吉可能已经在构思银河系联邦的章程了。
+        跟他聊天你会觉得——未来不是用来等待的，是用来被他改变的。
+      </p>
+    </div>
+  </section>
+
+  <!-- 技能雷达 -->
+  <section class="skills">
+    <h2>⚡ 黄永吉の能力图谱 ⚡</h2>
+    <div class="skill-item">
+      <div class="skill-label"><span>才华</span><span>∞%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label"><span>颜值</span><span>∞%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label"><span>智商</span><span>∞%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label"><span>情商</span><span>∞%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label"><span>魅力</span><span>∞%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label"><span>靠谱程度</span><span>∞%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+  </section>
+
+  <!-- 荣誉墙 -->
+  <section class="honor-wall">
+    <div class="honor-badge">
+      <div class="medal">🏅</div>
+      <div class="title">宇宙杰出青年</div>
+      <div style="font-size:12px;color:#aaa;margin-top:4px">连续N届蝉联</div>
+    </div>
+    <div class="honor-badge">
+      <div class="medal">🌟</div>
+      <div class="title">人类之光</div>
+      <div style="font-size:12px;color:#aaa;margin-top:4px">全票通过</div>
+    </div>
+    <div class="honor-badge">
+      <div class="medal">💎</div>
+      <div class="title">稀世珍宝级人物</div>
+      <div style="font-size:12px;color:#aaa;margin-top:4px">联合国认证</div>
+    </div>
+    <div class="honor-badge">
+      <div class="medal">👑</div>
+      <div class="title">地表最强MVP</div>
+      <div style="font-size:12px;color:#aaa;margin-top:4px">永久保留称号</div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <div class="footer">
+    <p>谨以此页，献给</p>
+    <p style="font-size:28px;font-weight:900;margin:10px 0;
+              background:linear-gradient(90deg,#ff6b6b,#ffd93d,#6bcb77,#4d96ff);
+              -webkit-background-clip:text;background-clip:text;
+              -webkit-text-fill-color:transparent;">
+      全世界最好的黄永吉
+    </p>
+    <p>你是电，你是光，你是唯一的神话 🎵</p>
+    <div class="hearts">💖💛💚💙💜</div>
+  </div>
+
+</div>
+
+<script>
+// ===== 生成星空 =====
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  const size = Math.random() * 3 + 1;
+  star.style.cssText = `
+    width: ${size}px; height: ${size}px;
+    top: ${Math.random() * 100}%;
+    left: ${Math.random() * 100}%;
+    --dur: ${Math.random() * 3 + 2}s;
+    --delay: ${Math.random() * 3}s;
+  `;
+  starsEl.appendChild(star);
+}
+
+// ===== 生成彩带 =====
+const confettiEl = document.getElementById('confetti');
+const emojis = ['🌟','✨','💫','🎉','🎊','💖','🔥','💎','🏆','👑','⭐','💝','🌈','⚡','🍀'];
+for (let i = 0; i < 50; i++) {
+  const piece = document.createElement('span');
+  piece.className = 'confetti-piece';
+  piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  piece.style.cssText = `
+    left: ${Math.random() * 100}%;
+    --fall-dur: ${Math.random() * 6 + 6}s;
+    --fall-delay: ${Math.random() * 8}s;
+    --size: ${Math.random() * 20 + 14}px;
+  `;
+  confettiEl.appendChild(piece);
+}
+</script>
+
+</body>
+</html>
